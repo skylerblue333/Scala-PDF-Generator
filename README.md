@@ -1,0 +1,1 @@
+# Scala-PDF-Generator\n\n## Overview\nEnterprise-grade pdf generator implementation in Scala.\n\n## Quick Start (1-Click Build)\n\n```bash\ngit clone https://github.com/skylerblue333/Scala-PDF-Generator.git\ncd Scala-PDF-Generator\n# Build instructions depend on the language\n```\n

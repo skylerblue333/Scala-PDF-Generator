@@ -1,0 +1,1 @@
+// Starting Scala-PDF-Generator service\n
