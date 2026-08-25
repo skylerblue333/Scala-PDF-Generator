@@ -19,6 +19,6 @@ object Main:
         System.err.println(error)
         sys.exit(4)
       case Right(bytes) =>
-        Option(output.getParent).foreach(Files.createDirectories(_))
+        Option(output.getParent).foreach(parent => Files.createDirectories(parent))
         Files.write(output, bytes)
         println(s"wrote ${bytes.length} bytes to $output")
