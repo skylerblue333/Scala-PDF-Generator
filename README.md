@@ -1,44 +1,39 @@
-<!-- PORTFOLIO PROJECT PROFILE: maintained by the repository owner -->
+# Sky PDF Core
 
-## Project profile and code-audit snapshot
+Sky PDF Core is a focused Scala 3 engineering-beta library and CLI that renders a bounded single-page PDF directly from printable ASCII text.
 
-**What this is:** **Scala-PDF-Generator** is a public repository described as: “Enterprise-grade pdf generator implementation in Scala. #SkyCoin4444 #AI #Blockchain #DevOps #Innovation” Its dominant language signals are **Python (4 files)**.
+## Implemented
 
-**Why it has value:** Its value is best understood through the implementation evidence currently present in the repository: **18 tracked files** were observed in the shallow audit, with the source structure and existing documentation providing the project’s specific context. This README does not treat a prototype, experiment, or archive as a production system without supporting evidence.
+- genuine Scala 3 implementation
+- valid `%PDF-1.4` document structure
+- calculated object offsets and cross-reference table
+- built-in Helvetica font reference
+- title plus up to 40 body lines
+- PDF string escaping for backslash and parentheses
+- bounded printable-ASCII input validation
+- refusal to overwrite an existing CLI output file
+- MUnit tests and real CLI smoke generation
 
-**Implementation evidence:** 2 test-related file(s) detected; 2 dependency or package manifest(s) detected; 2 build/CI/infrastructure signal(s) detected; and 3 documentation or governance file(s) detected. Test filenames observed include `tests/__init__.py`, `tests/test_main.py`. Dependency or package files include `package.json`, `requirements.txt`. Build, CI, or infrastructure signals include `Dockerfile`, `.github/workflows/ci.yml`.
+## Usage
 
-**Current status:** The repository is tracked on the `main` branch. The existing source tree, configuration, tests, workflows, and documentation remain authoritative for supported behavior and maturity. A code audit is not a production-readiness certification, and the presence of a test or workflow file does not establish that all checks pass.
+```bash
+sbt 'run report.pdf "Sky Report" "first line" "second line"'
+```
 
-**Relationship to the wider portfolio:** This repository is one focused component of the broader Skyler Blue Spillers portfolio across AI, software engineering, cloud and DevOps, cybersecurity, blockchain, finance, education, social systems, and creative work. It may provide a service boundary, implementation pattern, experiment, archive, or reusable idea for related repositories. Treat repositories as technical dependencies only where documented interfaces and verified project requirements support that relationship.
+The command refuses to overwrite an existing destination.
 
-**Quality and security note:** No obvious secret-like pattern was detected by the limited static scan; this is not a substitute for a security audit. No TODO/FIXME marker was detected in the scanned text files.
+## Product boundary
 
----
+Status: **engineering beta**.
 
-# Scala Pdf Generator
+This is deliberately a small deterministic PDF renderer, not a complete publishing engine. It does not support Unicode fonts, images, HTML/CSS, multi-page layout, tables, forms, encryption, digital signatures, PDF/A, accessibility tagging, arbitrary font embedding, templates, or server-side rendering. It should not be represented as a replacement for PDFBox, iText, browser print engines, or commercial document systems.
 
-![GitHub stars](https://img.shields.io/github/stars/skylerblue333/Scala-PDF-Generator?style=flat-square)
-![GitHub license](https://img.shields.io/github/license/skylerblue333/Scala-PDF-Generator?style=flat-square)
+The repository currently ships as a Scala library/CLI. The obsolete Python/Uvicorn container was removed rather than claiming a verified JVM container before one exists.
 
-## 🌟 Overview
-**Scala-PDF-Generator** is a professional-grade project within the **SkyCoin4444** ecosystem. It focuses on delivering high-value solutions in the domain of **Python**.
+## Verification
 
-## 🚀 Key Features
-- **Scalable Architecture**: Designed for enterprise-level growth and performance.
-- **Modern Standards**: Implements best practices for clean code and maintainability.
-- **Robust Integration**: Built to work seamlessly within modern cloud-native environments.
+CI runs Scala compilation, MUnit tests, then generates a real PDF and verifies its PDF header.
 
-## 🛠️ Technology Stack
-- **Primary Domain**: Python
-- **Ecosystem**: SkyCoin4444 Digital Platform
+## SKYCOIN4444 integration
 
-## 📂 Structure
-The project is organized into a modular structure to ensure clarity and ease of development.
-
-## 👨‍💻 Author
-**Skyler Blue Spillers**
-*Professional Chess Player & Software Engineer*
-
----
-*Powered by SkyCoin4444*
+Use this component for small deterministic text reports where the bounded ASCII/single-page contract is sufficient. Route richer document requirements to a separately verified rendering service.
